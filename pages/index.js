@@ -6,10 +6,9 @@ import ThumbnailCard from "../components/ThumbnailCard";
 import ReviewCard from "../components/ReviewCard";
 
 export async function getStaticProps() {
-
-  const client = createClient({
-    space: 'mcgbm1socg24', //process.env.CONTENTFUL_SPACE_ID,
-    accessToken: 'L6zPnIjA2mGQDQnCnPHk2QGEB-SczBtYRTO2ZMbQxWM', //process.env.CONTENTFUL_ACCESS_TOKEN,
+  const client = createClient({ 
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   })
   
   const thumbRes = await client.getEntries({
@@ -25,6 +24,7 @@ export async function getStaticProps() {
       thumbnails: thumbRes.items,
       reviews: revRes.items,
     },
+    revalidate: 1,
   }
 }
 
