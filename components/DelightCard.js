@@ -115,7 +115,7 @@ export default function DelightCard({ data }) {
 
         
         <form onSubmit={handleDelightForm} className="flex-col">
-          <div className="inline-flex items-center justify-between">
+          <div className="inline-flex items-center justify-between w-full">
             <div className="w-1/3">
               <label className="w-full hover:cursor-pointer select-none" onMouseDown={handleOrderOne}>
                 <input type="radio" value="option1" checked={orderOne} readOnly/>
