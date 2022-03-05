@@ -5,7 +5,7 @@ import CustomHead from "../components/CustomHead";
 export default function About() {
   return (
   <>
-  <CustomHead title="HELLO"></CustomHead>
+  <CustomHead title="HV Delights - About" />
   <section className="bg-slate-500 py-10">
     {/* width limiter */}
     <WidthLimiter>

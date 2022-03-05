@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import WidthLimiter from "./WidthLimiter";
 
 export default function Layout({ children }) {
@@ -17,6 +19,31 @@ export default function Layout({ children }) {
       // menu is closed (want to open menu)
       // set mobile menu to shown
       setMobileIsHidden(false)
+    }
+  }
+
+  const [email, setEmail] = useState('')
+
+  const handleEmail = event => {
+    setEmail(event.target.value)
+  }
+
+  const handleEmailList = event => {
+    event.preventDefault()
+    if (email.length > 0) {
+      // YOU WOULD ADD EMAIL TO A DB HERE
+      setEmail('')
+      Router.push('/emailGrat')
+    } else {
+      toast.warn("Make sure to input your email in the box before clicking the join button", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     }
   }
 
@@ -112,9 +139,8 @@ export default function Layout({ children }) {
           <div className="w-full md:w-5/12 flex flex-col">
             <h3 className="text-amber-100 text-center md:text-left text-xl">Join Our Mailing List!</h3>
             {/* onSubmit={handleEmailList} */}
-            {/* https://dmitripavlutin.com/react-useref-guide/ */}
-            <form className="flex w-full md:w-10/12 pt-4 md:pt-1" >
-              <input id="email" type="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-amber-100" placeholder="Email address" />
+            <form className="flex w-full md:w-10/12 pt-4 md:pt-1" onSubmit={handleEmailList}>
+              <input value={email} onChange={handleEmail} id="email" type="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-amber-100" placeholder="Email address" />
               <button type="submit" className="bg-red-300 hover:bg-red-400 text-red-800 rounded-r px-4">Join</button>
             </form>
           </div>
@@ -138,7 +164,7 @@ export default function Layout({ children }) {
 
             {/* copyright */}
             <div className="w-full md:w-5/12 flex items-center justify-center text-amber-100">
-              Copyright &copy; 2022 HV Tutors co.
+              Copyright &copy; 2022 HV Delights co.
             </div>
 
             </div>
