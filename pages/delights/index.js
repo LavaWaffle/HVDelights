@@ -46,7 +46,7 @@ export default function Delights({ delights }) {
 
             <div className="sm:absolute z-0 top-full inset-x-3 hidden text-center sm:text-left group-focus-within:flex flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-amber-400 text-[22px] sm:text-[20px]">
               <Link href="/delights"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">All Delights</a></Link>
-              <Link href="/delights/sandwichs"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
+              <Link href="/delights/sandwiches"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
               <Link href="/delights/salads"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Salads</a></Link>
               <Link href="/delights/soups"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Soups</a></Link>
               <Link href="/delights/snacks"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks</a></Link>

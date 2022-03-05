@@ -20,6 +20,7 @@ export default function ThumbnailCard({ data, scale }) {
         <Image 
           id={data.sys.id}
           src={img}
+          alt={title}
           width="110"
           height="125"
           layout="responsive"

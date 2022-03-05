@@ -38,10 +38,11 @@ export default function DelightCard({ data }) {
 
   const [bulk, setBulk] = useState(10)
   const handleBulk = event => {
-    if (event.target.value > 10) { 
-      setBulk(event.target.value)
+    if (event.target.value >= 10 && event.target.value <= 200) { 
+        setBulk(event.target.value)
+      
     } else {
-      toast.info('You can\'t have a bulk order of less than 10 items', {
+      toast.info('You can\'t have a bulk order of less than 10 or greater than 200 items', {
         position: "top-right",
         autoClose: 4000,
         hideProgressBar: false,
