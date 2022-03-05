@@ -36,7 +36,7 @@ export default function Layout({ children }) {
       Router.push('/emailGrat')
     } else {
       toast.warn("Make sure to input your email in the box before clicking the join button", {
-        position: "bottom-right",
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,

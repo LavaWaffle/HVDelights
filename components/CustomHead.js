@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import favicon from '../public/favicon.ico';
+import favicon from '../public/favi.ico';
 
 
 const CustomHead = ({ title }) => (

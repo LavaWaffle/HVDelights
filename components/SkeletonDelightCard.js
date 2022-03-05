@@ -1,9 +1,8 @@
 export default function SkeletonDelightCard() {
-  const handleDelightForm = () => {}
   return (
   <div className="blur-sm overflow-hidden rounded-lg shadow-lg bg-red-400">
     <div className="block justify-center w-full h-3/12">
-      <div className="bg-black w-full h-full"></div>
+      <div className="bg-slate-200 w-full h-48"></div>
     </div> 
     <div className="px-5 py-3">
       <h3 className="text-gray-900 text-xl font-bold mb-2">Lorem ipsum</h3>
@@ -32,7 +31,7 @@ export default function SkeletonDelightCard() {
         </ul>
       </div>
 
-      <form onSubmit={handleDelightForm} className="flex-col">
+      <form readOnly className="flex-col">
         <div className="inline-flex items-center justify-between w-full">
           <div className="w-1/3">
             <label className="w-full hover:cursor-pointer select-none">
