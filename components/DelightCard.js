@@ -95,6 +95,7 @@ export default function DelightCard({ data }) {
       <div className="block justify-center w-full h-3/12">
         <Image 
           src={`https:${thumbnail.fields.file.url}`}
+          alt={title}
           width={thumbnail.fields.file.details.image.width}
           height={thumbnail.fields.file.details.image.height}
           layout="responsive"

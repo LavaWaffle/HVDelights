@@ -60,6 +60,7 @@ export default function Layout({ children }) {
             <Link href="/"><a className="w-5/12 sm:w-3/12 sm:mt-1 outline-none">
               <Image 
                 src="/logo.svg"
+                alt="logo"
                 width="2032"
                 height="392"
               /> 
