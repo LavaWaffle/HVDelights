@@ -104,7 +104,7 @@ export default function Layout({ children }) {
                 <Link href="/delights/sandwiches"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
                 <Link href="/delights/salads"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Salads</a></Link>
                 <Link href="/delights/soups"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Soups</a></Link>
-                <Link href="/delights/snacks-soups"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks/Sides</a></Link>
+                <Link href="/delights/snacks"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks</a></Link>
                 <Link href="/delights/drinks"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Drinks</a></Link>
               </div>
             </div>
