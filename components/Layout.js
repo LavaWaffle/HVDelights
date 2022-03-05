@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import WidthLimiter from "./WidthLimiter";
 
 export default function Layout({ children }) {
@@ -29,7 +30,7 @@ export default function Layout({ children }) {
         <div className="flex flex-col sm:flex-row items-center justify-between">
           {/* left */}
           <div className="flex justify-between items-center w-full">
-            <Link href="/"><a className="w-5/12 sm:w-3/12 sm:mt-1">
+            <Link href="/"><a className="w-5/12 sm:w-3/12 sm:mt-1 outline-none">
               <Image 
                 src="/logo.svg"
                 width="2032"
@@ -37,7 +38,7 @@ export default function Layout({ children }) {
               /> 
             </a></Link>
             {/* hamburger */}
-            <div className="sm:hidden">
+            <div className="sm:hidden outline-none">
               <button onClick={handleMobileClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={ (false == mobileIsHidden) ? "hidden" : "h-6 w-6 text-amber-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -51,40 +52,42 @@ export default function Layout({ children }) {
           {/* right */}
           <div className={ (true == mobileIsHidden) ? "hidden sm:flex flex-row items-center space-x-8" : "sm:flex flex-col sm:flex-row items-center w-full sm:w-fit sm:space-x-8 text-center" }>
             {/* services */}
-            <div className="group relative rounded-lg sm:hover:bg-amber-500 text-amber-50 py-2 px-3">
+            <div className="group relative rounded-lg sm:hover:bg-amber-500 text-amber-50 py-2 px-4">
               <div>
                 {/* sm and above */}
-                <Link href="/delights"><a className="hidden sm:inline-flex items-center gap-1">
-                  Delights
+                <Link href="/delights"><a className="hidden sm:inline-flex items-center gap-1 outline-none">
+                  <span>Delights</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:group-hover:-rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </a></Link>
                 {/* mobile */}
-                <div className="inline-flex sm:hidden items-center gap-1">
-                  <button>Delights</button>
+                <div className="inline-block sm:hidden gap-1">
+                  <button className="inline-flex items-center outline-none">
+                  <span>Delights</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-focus-within:-rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
+                  </button>
                 </div>
               </div>
               {/* service sub-pages */}
-              <div className="sm:absolute z-10 top-full inset-x-3 hidden text-center sm:text-left group-focus-within:flex sm:group-hover:flex flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-amber-400 text-[22px] sm:text-[20px]">
-                <Link href="#"><a className="sm:hidden px-3 py-2">All Delights</a></Link>
-                <Link href="#"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">Sandwiches</a></Link>
-                <Link href="#"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">English</a></Link>
-                <Link href="#"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">Science</a></Link>
-                <Link href="#"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">History</a></Link>
-                <Link href="#"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">Sat/Act</a></Link>
+              <div className="sm:absolute z-50 top-full inset-x-3 hidden text-center sm:text-left group-focus-within:flex sm:group-hover:flex sm:group-focus-within:hidden flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-amber-400 text-[22px] sm:text-[20px]">
+                <Link href="/delights"><a className="sm:hidden px-3 py-2">All Delights</a></Link>
+                <Link href="/delights/sandwiches"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
+                <Link href="/delights/salads"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Salads</a></Link>
+                <Link href="/delights/soups"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Soups</a></Link>
+                <Link href="/delights/snacks-soups"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks/Sides</a></Link>
+                <Link href="/delights/drinks"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Drinks</a></Link>
               </div>
             </div>
             {/* about */}
-            <div className="rounded-lg sm:hover:bg-amber-500 text-amber-50 py-2 px-3">
-              <Link href="/about"><a>About</a></Link>
+            <div className="rounded-lg sm:hover:bg-amber-500 text-amber-50 py-2 px-3 outline-none">
+              <Link href="/about"><a className="outline-none">About</a></Link>
             </div>
             {/* cart */}
-            <div className="rounded-lg sm:hover:bg-amber-500 text-amber-50 py-2 px-3">
-              <Link href="/cart"><a className="inline-flex items-center gap-1">
+            <div className="rounded-lg sm:hover:bg-amber-500 text-amber-50 py-2 px-3 outline-none">
+              <Link href="/cart"><a className="inline-flex items-center gap-1 outline-none">
                 Cart
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -142,6 +145,7 @@ export default function Layout({ children }) {
           </div>
         </WidthLimiter>
       </footer>
+      <ToastContainer />
     </>
   )
 }

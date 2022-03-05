@@ -13,6 +13,11 @@ module.exports = {
         '4000/4250':'4000 / 4250'
       }
     },
+    ripple: theme => ({
+      colors: theme('colors')
+    }),
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-ripple')()
+  ],
 }
