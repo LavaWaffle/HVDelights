@@ -49,7 +49,7 @@ export default function Delights({ delights }) {
               <Link href="/delights/sandwichs"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
               <Link href="/delights/salads"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Salads</a></Link>
               <Link href="/delights/soups"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Soups</a></Link>
-              <Link href="/delights/snacks-soups"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks/Sides</a></Link>
+              <Link href="/delights/snacks"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks</a></Link>
               <Link href="/delights/drinks"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Drinks</a></Link>
             </div>
           </div>

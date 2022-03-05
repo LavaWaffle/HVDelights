@@ -5,7 +5,7 @@ import CustomHead from "../components/CustomHead";
 export default function About() {
   return (
   <>
-  <CustomHead title="HELLO"></CustomHead>
+  <CustomHead title="HV Delights - About" />
   <section className="bg-slate-500 py-10">
     {/* width limiter */}
     <WidthLimiter>
@@ -33,7 +33,8 @@ export default function About() {
           <div className="group relative sm:w-5/6 sm:h-5/6 overflow-hidden rounded-lg shadow-lg transition duration-200 ease-in-out">
             <div className="aspect-10/9 w-full object-cover overflow-hidden transition duration-200 ease-in-out group-hover:scale-110 group-hover:blur-[5px]">
               <Image 
-                src="/LOREM.jpg"
+                src="/LOREM.jpg" // NEEDS TO BE ADDED
+                alt="LOREM"
                 height="2547"
                 width="2547"  
               />

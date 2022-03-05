@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import WidthLimiter from "./WidthLimiter";
 
 export default function Layout({ children }) {
@@ -20,6 +22,31 @@ export default function Layout({ children }) {
     }
   }
 
+  const [email, setEmail] = useState('')
+
+  const handleEmail = event => {
+    setEmail(event.target.value)
+  }
+
+  const handleEmailList = event => {
+    event.preventDefault()
+    if (email.length > 0) {
+      // YOU WOULD ADD EMAIL TO A DB HERE
+      setEmail('')
+      Router.push('/emailGrat')
+    } else {
+      toast.warn("Make sure to input your email in the box before clicking the join button", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+    }
+  }
+
   return (
     <> 
     {/* navbar */}
@@ -33,6 +60,7 @@ export default function Layout({ children }) {
             <Link href="/"><a className="w-5/12 sm:w-3/12 sm:mt-1 outline-none">
               <Image 
                 src="/logo.svg"
+                alt="logo"
                 width="2032"
                 height="392"
               /> 
@@ -77,7 +105,7 @@ export default function Layout({ children }) {
                 <Link href="/delights/sandwiches"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
                 <Link href="/delights/salads"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Salads</a></Link>
                 <Link href="/delights/soups"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Soups</a></Link>
-                <Link href="/delights/snacks-soups"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks/Sides</a></Link>
+                <Link href="/delights/snacks"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Snacks</a></Link>
                 <Link href="/delights/drinks"><a className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">Drinks</a></Link>
               </div>
             </div>
@@ -112,9 +140,8 @@ export default function Layout({ children }) {
           <div className="w-full md:w-5/12 flex flex-col">
             <h3 className="text-amber-100 text-center md:text-left text-xl">Join Our Mailing List!</h3>
             {/* onSubmit={handleEmailList} */}
-            {/* https://dmitripavlutin.com/react-useref-guide/ */}
-            <form className="flex w-full md:w-10/12 pt-4 md:pt-1" >
-              <input id="email" type="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-amber-100" placeholder="Email address" />
+            <form className="flex w-full md:w-10/12 pt-4 md:pt-1" onSubmit={handleEmailList}>
+              <input value={email} onChange={handleEmail} id="email" type="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-amber-100" placeholder="Email address" />
               <button type="submit" className="bg-red-300 hover:bg-red-400 text-red-800 rounded-r px-4">Join</button>
             </form>
           </div>
@@ -138,7 +165,7 @@ export default function Layout({ children }) {
 
             {/* copyright */}
             <div className="w-full md:w-5/12 flex items-center justify-center text-amber-100">
-              Copyright &copy; 2022 HV Tutors co.
+              Copyright &copy; 2022 HV Delights co.
             </div>
 
             </div>
