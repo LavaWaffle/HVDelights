@@ -23,7 +23,6 @@ export async function getStaticProps() {
 }
 
 export default function Delights({ delights }) {
-  console.log(delights)
   return (
     <>
     <CustomHead title="HVDelights - Delights" />
