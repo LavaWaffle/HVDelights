@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import WidthLimiter from "./WidthLimiter";
 
 export default function Layout({ children }) {
+  // sets default value of mobile is hidden
   const [mobileIsHidden, setMobileIsHidden] = useState(true)
 
   // called when mobile menu toggle is clicked
@@ -22,19 +23,28 @@ export default function Layout({ children }) {
     }
   }
 
+  // sets default value for email
   const [email, setEmail] = useState('')
 
+  // handles email changing value
   const handleEmail = event => {
     setEmail(event.target.value)
   }
 
+  // handles email form submit
   const handleEmailList = event => {
+    // prevents form from reloading the page
     event.preventDefault()
     if (email.length > 0) {
+      // if user entered data
       // YOU WOULD ADD EMAIL TO A DB HERE
+      // reset email
       setEmail('')
+      // push user to emailGrat page
       Router.push('/emailGrat')
     } else {
+      // if user did not enter data
+      // ask theme to enter data before submiting
       toast.warn("Make sure to input your email in the box before clicking the join button", {
         position: "top-right",
         autoClose: 3000,
@@ -43,7 +53,7 @@ export default function Layout({ children }) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        })
+      })
     }
   }
 
