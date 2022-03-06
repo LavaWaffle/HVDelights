@@ -1,6 +1,5 @@
-import Head from 'next/head';
-import favicon from '../public/favicon.ico';
-
+import Head from "next/head";
+import favicon from "../public/favic.ico";
 
 const CustomHead = ({ title }) => (
   <Head>
