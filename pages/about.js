@@ -43,7 +43,7 @@ export default function About() {
             </div>
             {/* chicken hover text */}
             <div className="absolute inset-0 text-4xl text-teal-700 text-bold p-4 bg-white flex justify-center items-center transition duration-200 ease-in-out opacity-0 group-hover:opacity-50">
-              Grilled chicken club salad
+              Grilled Chicken Club Salad
             </div>
           </div>
         </div>
