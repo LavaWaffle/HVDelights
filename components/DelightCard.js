@@ -9,9 +9,9 @@ export default function DelightCard({ data }) {
   // grabs data from prop
   const { thumbnail, title, description, ingredients, price, nutrition } = data.fields
   // creates price for five from default price
-  const priceFive = Math.round(price*0.95*5*100)/100
+  const priceFive = (Math.round(price*0.95*5*100)/100).toFixed(2)
   // creates price for bulk from default price
-  const priceBulkPer = Math.round(price*0.90*100)/100
+  const priceBulkPer = (Math.round(price*0.90*100)/100).toFixed(2)
 
   // sets default states of radio buttons
   const [orderOne, setOrderOne] = useState(true)
@@ -145,9 +145,9 @@ export default function DelightCard({ data }) {
     } else {
       // if user wants to order many items
       // add item to cart
-      setCart({title: title, quantity: parseInt(bulk), price: Math.round(priceBulkPer*bulk*1000)/1000})
+      setCart({title: title, quantity: parseInt(bulk), price: (Math.round(priceBulkPer*bulk*1000)/1000).toFixed(2)})
       // tell user they added the item to the cart
-      toast.info(`Added ${bulk} ${title}s to the cart for $${Math.round(priceBulkPer*bulk*1000)/1000}`, {
+      toast.info(`Added ${bulk} ${title}s to the cart for $${(Math.round(priceBulkPer*bulk*1000)/1000).toFixed(2)}`, {
         position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,

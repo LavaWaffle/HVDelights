@@ -10,7 +10,7 @@ export default function Cart() {
     // grab cart data from cookies
     cart = (JSON.parse(getCookie('cart'), {sameSite: true}).cart)
     // create sum from cart data
-    sum = (Math.round((cart.map(delight => delight.price).reduce((prev, curr) => prev + curr, 0))*100)/100)
+    sum = (Math.round((cart.map(delight => delight.price).reduce((prev, curr) => parseFloat(prev) + parseFloat(curr), 0))*100)/100)
   } else {
     // cart doesn't exist
     // set cart to empty array
@@ -49,13 +49,13 @@ export default function Cart() {
           <thead className="text-gray-100 text-bold">
             <tr>
               <th className="py-[0.25rem] px-2">
-                Service
+                Delight
               </th>
               <th className="py-[0.25rem] px-2">
-                Time
+                Quantity
               </th>
               <th className="py-[0.25rem] px-2">
-                Pricing
+                Price
               </th>
             </tr>
           </thead>
