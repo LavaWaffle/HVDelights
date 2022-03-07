@@ -1,32 +1,30 @@
 import CustomHead from "../components/CustomHead";
 import WidthLimiter from "../components/WidthLimiter";
-import { getCookie, removeCookies } from 'cookies-next';
-import { useState } from "react";
+import { getCookie, removeCookies, checkCookies } from 'cookies-next';
 
 export default function Cart() {
-  try {
+  let cart
+  let sum 
+  if (true == checkCookies('cart')) {
+    // if cart data exists
     // grab cart data from cookies
-    var [cart, setCart] = useState(JSON.parse(getCookie('cart'), {sameSite: true}).cart)
+    cart = (JSON.parse(getCookie('cart'), {sameSite: true}).cart)
     // create sum from cart data
-    var [sum, setSum] = useState(Math.round((cart.map(delight => delight.price).reduce((prev, curr) => prev + curr, 0))*100)/100)
-  } catch(e) {
-    // if cart data doesn't exist
-    // create a cart with an empty array
-    var [cart, setCart] = useState([])
+    sum = (Math.round((cart.map(delight => delight.price).reduce((prev, curr) => prev + curr, 0))*100)/100)
+  } else {
+    // cart doesn't exist
+    // set cart to empty array
+    cart = []
     // create sum of 0
-    var [sum, setSum] = useState(0)
+    sum = 0
   }
 
   // handles form submit
   const handleNextForm = event => {
     // prevents page froom reloading
     event.preventDefault()
-    // removes cart from keys
+    // removes cart from cookies
     removeCookies('cart')
-    // sets cart to an empty array
-    setCart([])
-    // sets sum to 0
-    setSum(0)
   }
 
   return (
@@ -66,15 +64,15 @@ export default function Cart() {
 					{ cart.length > 0 ? 
           // cart has data
           // display cart
-          cart.map((delight) => (
-            <tr className="border-b-[2px] border-slate-500 even:bg-neutral-400 even:hover:bg-neutral-300 odd:bg-stone-400 odd:hover:bg-stone-300 even:text-gray-50 odd:text-zinc-50">
-              <td className="py-[0.25rem] px-2">
+          cart.map((delight, index) => (
+            <tr key={index} className="border-b-[2px] border-slate-500 even:bg-neutral-400 even:hover:bg-neutral-300 odd:bg-stone-400 odd:hover:bg-stone-300 even:text-gray-50 odd:text-zinc-50">
+              <td key={index + delight.title} className="py-[0.25rem] px-2">
                 {delight.title}
               </td>
-              <td className="py-[0.25rem] px-2">
+              <td key={index + delight.quantity} className="py-[0.25rem] px-2">
                 {delight.quantity}
               </td>
-              <td className="py-[0.25rem] px-2">
+              <td key={index + delight.price} className="py-[0.25rem] px-2">
                 ${delight.price}
               </td>
             </tr>
