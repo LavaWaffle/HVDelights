@@ -46,7 +46,7 @@ export default function Layout({ children }) {
       // if user did not enter data
       // ask theme to enter data before submiting
       toast.warn("Make sure to input your email in the box before clicking the join button", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -152,7 +152,7 @@ export default function Layout({ children }) {
             {/* onSubmit={handleEmailList} */}
             <form className="flex w-full md:w-10/12 pt-4 md:pt-1" onSubmit={handleEmailList}>
               <input value={email} onChange={handleEmail} id="email" type="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-amber-100" placeholder="Email address" />
-              <button type="submit" className="bg-red-300 hover:bg-red-400 text-red-800 rounded-r px-4">Join</button>
+              <button type="submit" className="ripple-bg-red-300 text-red-800 rounded-r px-4">Join</button>
             </form>
           </div>
           {/* social links & copyright */}

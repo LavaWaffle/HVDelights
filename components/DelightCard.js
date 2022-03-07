@@ -1,16 +1,17 @@
 import Image from "next/image";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { setCookies, getCookie, checkCookies } from 'cookies-next';
 
 export default function DelightCard({ data }) {
   // grabs data from prop
   const { thumbnail, title, description, ingredients, price, nutrition } = data.fields
   // creates price for five from default price
-  const priceFive = Math.round(price*0.95*5*100)/100
+  const priceFive = (Math.round(price*0.95*5*100)/100).toFixed(2)
   // creates price for bulk from default price
-  const priceBulkPer = Math.round(price*0.90*100)/100
+  const priceBulkPer = (Math.round(price*0.90*100)/100).toFixed(2)
 
   // sets default states of radio buttons
   const [orderOne, setOrderOne] = useState(true)
@@ -65,7 +66,7 @@ export default function DelightCard({ data }) {
       // if user entered value is < 10 or > 200
       // warn then to enter a value that is supported
       toast.info('You can\'t have a bulk order of less than 10 or greater than 200 items', {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -76,16 +77,50 @@ export default function DelightCard({ data }) {
     }
   }
 
+  // handles cart 
+  const [cart, setCart] = useState()
+  // handles cart changing (runs when cart changes)
+  useEffect(() => {
+    if (true == checkCookies('cart')) {
+      // cart exists in cookies
+      if (typeof cart === 'object') {
+        // user ordered a delight
+        // creates a new cart by adding the current cart to the new cart delight
+        let newCart = [...JSON.parse(getCookie('cart'))['cart'], cart]
+        // sets the cart to the new cart
+        setCookies('cart', {cart: newCart}, {
+          path: "/",
+          sameSite: true,
+        })
+      }
+    } else if (typeof cart === 'object') {
+      // user ordered a delight, but cart doesn't exist
+      // create cart and add item to cart
+      setCookies('cart', {cart: [cart]}, {
+        path: "/",
+        sameSite: true,
+      })
+    } else {
+      // user has not ordered anything
+      // create a cart
+      setCookies('cart', {cart: []}, {
+        path: "/",
+        sameSite: true,
+      })
+    }
+  }, [cart])
+
   // handles form submit
   const handleDelightForm = event => {
     // prevents form from reloading the page
     event.preventDefault()
     if (true == orderOne) {
       // if user wants to order one delight
-      // TO DO: ACTUALY ADD IT TO CART
+      // add item to cart
+      setCart({title: title, quantity: 1, price: price})
       // tell user they added the item to the cart
       toast.info(`Added 1 ${title} to the cart for $${price}`, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -95,10 +130,11 @@ export default function DelightCard({ data }) {
       });
     } else if (true == orderFive) {
       // if user wants to order five delights
-      // TO DO: ACTUALY ADD IT TO CART
+      // add item to cart
+      setCart({title: title, quantity: 5, price: priceFive})
       // tell user they added the item to the cart
       toast.info(`Added 5 ${title}s to the cart for $${priceFive}`, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -108,10 +144,11 @@ export default function DelightCard({ data }) {
       });
     } else {
       // if user wants to order many items
-      // TO DO: ACTUALY ADD IT TO CART
+      // add item to cart
+      setCart({title: title, quantity: parseInt(bulk), price: (Math.round(priceBulkPer*bulk*1000)/1000).toFixed(2)})
       // tell user they added the item to the cart
-      toast.info(`Added ${bulk} ${title}s to the cart for $${Math.round(priceBulkPer*bulk*1000)/1000}`, {
-        position: "top-right",
+      toast.info(`Added ${bulk} ${title}s to the cart for $${(Math.round(priceBulkPer*bulk*1000)/1000).toFixed(2)}`, {
+        position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
