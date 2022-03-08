@@ -3,6 +3,7 @@ import CustomHead from "../components/CustomHead";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Router from "next/router";
 
 export default function CheckOut() {
   // sets default states of name inputs
@@ -152,10 +153,25 @@ export default function CheckOut() {
         progress: undefined,
       });
     } else {
-      // USER PASSED ALL CHECKS ROUTE THEM TO NEXT PAGE
+      // user passed all checks
+      // push the content out of hero
+      setAnimate('animate__slide-out-left')
+      setTimeout(() => {
+        if (creditDebit) {
+        // user chose to enter a credit cart
+        // push user to credit card page
+        Router.push('/finalizeCheckout/credit')
+        } else {
+        // user chose to enter paypal
+        // push user to paypal page
+        Router.push('finalizeCheckout/paypal')
+        }
+      }, 350)
     }
   }
 
+  // set default animate state
+  const [animate, setAnimate] = useState("animate__slide-in-right")
   return (
   <>
   {/* page name */}
@@ -164,7 +180,8 @@ export default function CheckOut() {
   <section className="bg-slate-500 py-10">
     {/* width limiter */}
     <WidthLimiter>
-      <div className="animate__slide-in-right">
+      {/* animate content in and out */}
+      <div className={animate}>
       {/* title */}
       <div className="flex justify-center items-center">
         <h1 className="text-amber-400 font-title text-4xl text-center font-bold mb-3">
@@ -180,7 +197,7 @@ export default function CheckOut() {
           <div className="inline-flex flex-col sm:flex-row w-full gap-3">
             <input value={firstName} onChange={handleFirst} htmlFor="first" placeholder="First name" type="text" className="w-full sm:w-1/3 rounded py-3 px-4 outline-none focus:bg-amber-100"/>
             <input value={middleName} onChange={handleMiddle} htmlFor="middle" placeholder="Middle name" type="text" className="w-full sm:w-1/3 rounded py-3 px-4 outline-none focus:bg-amber-100"/>
-            <input value={lastName} onChange={handleLast} htmlor="last" placeholder="Last name" type="text" className="w-full sm:w-1/3 rounded py-3 px-4 outline-none focus:bg-amber-100"/>
+            <input value={lastName} onChange={handleLast} htmlFor="last" placeholder="Last name" type="text" className="w-full sm:w-1/3 rounded py-3 px-4 outline-none focus:bg-amber-100"/>
           </div>
 
           {/* email label */}
@@ -227,7 +244,7 @@ export default function CheckOut() {
               </label>
             </div>
           </div>
-
+          {/* submit button */}
           <button type="sumbit" className="inline-block px-10 py-2.5 rounded ripple-bg-amber-400 text-white">Finalize Checkout</button>
         </div>
       </form>

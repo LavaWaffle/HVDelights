@@ -8,7 +8,6 @@ import { useState } from 'react';
 import DelightTableRow from "../components/DelightTableRow";
 import DelightTableRowEmpty from "../components/DelightTableRowEmpty";
 
-
 export default function Cart() {
   let cart
   let sum 
@@ -34,7 +33,7 @@ export default function Cart() {
     if (cart.length > 0) {
     // user hasitems in cart
     // push content out of hero
-    setAnime('animate__slide-out-left')
+    setAnimate('animate__slide-out-left')
     // pushes user to checkout page
     setTimeout(() => {Router.push('/checkout')}, 350)
     } else {
@@ -49,8 +48,9 @@ export default function Cart() {
       });
     }
   }
-
-  const [anime, setAnime] = useState('')
+  
+  // set default animate state
+  const [animate, setAnimate] = useState('')
   return (
   <>
   {/* page name */}
@@ -59,6 +59,8 @@ export default function Cart() {
   <section className="bg-slate-500 py-10">
     {/* width limiter */}
     <WidthLimiter>
+      {/* animate content out */}
+      <div className={animate}>
       {/* title */}
       <div className="flex justify-center items-center">
         <h1 className="text-amber-400 font-title text-4xl text-center font-bold mb-3">
@@ -66,7 +68,6 @@ export default function Cart() {
         </h1>
       </div>
 
-      <div className={anime}>
       {/* cart */}
       <div className="flex items-center justify-center w-full">
         <table className="w-fit sm:w-fit md:w-10/12 lg:w-9/12 bg-red-400 text-center md:text-left text-xl sm:text-3xl">

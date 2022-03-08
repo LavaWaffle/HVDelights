@@ -22,7 +22,7 @@ module.exports = {
   plugins: [
     require('tailwindcss-ripple')(),
     tailwindCssAnimista({
-      classes:['animate__slide-out-left', 'animate__slide-in-right'],
+      classes:['animate__slide-out-left', 'animate__slide-in-left', 'animate__slide-in-right'],
       settings:{
         'animate__slide-out-left': {
           duration: 500,
@@ -30,6 +30,11 @@ module.exports = {
           isInfinite: false,
         },
         'animate__slide-in-right': {
+          duration: 500,
+          iterationCounts: 1,
+          isInfinite: false,
+        },
+        'animate__slide-in-left': {
           duration: 500,
           iterationCounts: 1,
           isInfinite: false,
