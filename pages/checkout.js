@@ -226,7 +226,7 @@ export default function CheckOut() {
           </div>
           
           {/* paytype label */}
-          <label htmlFor="address" className="text-amber-300 text-3xl text-center font-bold mt-0">Paytype</label>
+          <label htmlFor="address" className="text-amber-300 text-3xl text-center font-bold mt-0">Pay Type</label>
           {/* paytype radio */}
           <div className="inline-flex flex-col sm:flex-row items-center justify-between w-full">
             {/* credit / debit radio */}

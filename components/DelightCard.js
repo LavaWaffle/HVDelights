@@ -150,7 +150,7 @@ export default function DelightCard({ data }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-lg shadow-lg bg-red-400">
+    <div className="animate__scale-in-center overflow-hidden rounded-lg shadow-lg bg-red-400">
       {/* image */}
       <div className="block w-full h-3/12">
         <Image 
@@ -182,7 +182,7 @@ export default function DelightCard({ data }) {
           {/* price */}
           <ul>
             <li className="before:content-['\2022\0020']">{`One: $${price}`}</li>
-            <li className="before:content-['\2022\0020']">{`Five: $${priceFive}`}</li>
+            <li className="before:content-['\2022\0020']">{`Five: $${priceFive} : $${(priceFive/5).toFixed(2)} per`}</li>
             <li className="before:content-['\2022\0020']">{`Bulk: $${priceBulkPer} per`}</li>
           </ul>
           {/* nutrition */}
