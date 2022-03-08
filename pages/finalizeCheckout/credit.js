@@ -157,7 +157,7 @@ export default function Credit() {
             <div className="w-full sm:w-1/2">
               {/* cart */}
               <div className="inline-flex items-center justify-center w-full">
-                <table className="w-full bg-red-400 text-center text-xl ">
+                <table className="w-full bg-red-400 text-center text-[16px] sm:text-xl">
                   {/* cart head */}
                   <thead className="text-gray-100 text-bold">
                     <tr>
@@ -173,7 +173,7 @@ export default function Credit() {
                     </tr>
                   </thead>
 
-                  <tbody className="border-t-[2px] border-slate-500">
+                  <tbody className="border-t-[2px] border-slate-500 text-[16px] sm:text-xl">
                   { cart.length > 0 ? 
                   // cart has data
                   // display cart
@@ -186,7 +186,7 @@ export default function Credit() {
                   }
                   </tbody>
                   {/* cart subhead */}
-                  <thead className="text-gray-100 text-bold">
+                  <thead className="text-gray-100 text-bold text-[16px] sm:text-xl">
                     <tr>
                       <th className="py-[0.25rem] px-2 text-center" colSpan="3">
                         Total Price
@@ -194,7 +194,7 @@ export default function Credit() {
                     </tr>
                   </thead>
                   {/* cart total price */}
-                  <tbody className="border-t-[2px] border-slate-500">
+                  <tbody className="border-t-[2px] border-slate-500 text-[16px] sm:text-xl">
                     <tr className="bg-stone-400 hover:bg-stone-300 text-amber-200 animate__animated animate__backInUp">
                       <td className="py-[0.25rem] px-2 text-center" colSpan="3">
                         ${sum}
