@@ -111,7 +111,7 @@ export default function DelightsSlug({ delights }) {
       {/* width limiter */}
       <WidthLimiter>
         {/* title */}
-        <div className="flex justify-around items-center mb-4">
+        <div className="flex flex-col sm:flex-row justify-around items-center mb-4">
           <h1 className="text-amber-400 font-title text-4xl text-center font-bold mb-3">
             {`Delights - ${delights[0].fields.delightType}`}
           </h1>
@@ -119,13 +119,13 @@ export default function DelightsSlug({ delights }) {
           <div className="group relative rounded-lg bg-amber-400 z-10 text-amber-50 py-2 px-5 outline-none">
             <button tabIndex="0" className="w-full h-full inline-flex items-center gap-1 outline-none">
               <span className="font-title">Delight Types</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-focus-within:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:-rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             {/* submenu content */}
-            <div className="absolute z-0 top-full inset-x-3 hidden text-left group-focus-within:flex flex-col pt-0 pb-0 border-b-2 border-amber-400 text-[20px]">
-              <Link tabIndex="0" href="/delights"><a className="bg-amber-100 sm:hover:bg-amber-500 text-amber-500 sm:hover:text-amber-50 px-3 py-2 outline-none">All Delights</a></Link>
+            <div className="absolute z-0 top-full inset-x-3 hidden text-left group-hover:flex flex-col pt-0 pb-0 border-b-2 border-amber-400 text-[20px]">
+              <Link tabIndex="0" href="/delights"><a className="bg-amber-100 hover:bg-amber-500 text-amber-500 hover:text-amber-50 px-3 py-2 outline-none">All Delights</a></Link>
               <Link tabIndex="0" href="/delights/sandwiches"><a className="bg-amber-100 hover:bg-amber-500 text-amber-500 hover:text-amber-50 px-3 py-2 outline-none">Sandwiches</a></Link>
               <Link tabIndex="0" href="/delights/salads"><a className="bg-amber-100 hover:bg-amber-500 text-amber-500 hover:text-amber-50 px-3 py-2 outline-none">Salads</a></Link>
               <Link tabIndex="0" href="/delights/soups"><a className="bg-amber-100 hover:bg-amber-500 text-amber-500 hover:text-amber-50 px-3 py-2 outline-none">Soups</a></Link>

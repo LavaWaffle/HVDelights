@@ -100,7 +100,7 @@ export default function Paypal() {
     {/* page name */}
     <CustomHead title="HV Delights - Finalize Checkout" />
     {/* hero */}
-    <section className="bg-slate-500 py-10">
+    <section className="bg-slate-500 py-10 overflow-x-hidden">
       {/* width limiter */}
       <WidthLimiter>
         {/* animate content in and out */}
@@ -117,7 +117,7 @@ export default function Paypal() {
             {/* left */}
             <div className="w-full sm:w-1/2">
               {/* name label */}
-              <label htmlFor="name" className="block text-amber-300 text-3xl text-center font-bold mt-2">Credit Card Information</label>
+              <label htmlFor="name" className="block text-amber-300 text-3xl text-center font-bold mt-2">PayPal Information</label>
               {/* name inputs */}
               <div className="space-y-3 mt-3">
                 <input value={payPalEmail} onChange={handlePayPalEmail} htmlFor="PayPal Email" placeholder="PayPal Email" type="text" className="w-full rounded py-3 px-4 outline-none focus:bg-amber-100"/>
@@ -134,7 +134,7 @@ export default function Paypal() {
             <div className="w-full sm:w-1/2">
               {/* cart */}
               <div className="inline-flex items-center justify-center w-full">
-                <table className="w-full bg-red-400 text-center text-xl ">
+                <table className="w-full bg-red-400 text-center text-[16px] sm:text-xl ">
                   {/* cart head */}
                   <thead className="text-gray-100 text-bold">
                     <tr>
@@ -150,7 +150,7 @@ export default function Paypal() {
                     </tr>
                   </thead>
 
-                  <tbody className="border-t-[2px] border-slate-500">
+                  <tbody className="border-t-[2px] border-slate-500 text-[16px] sm:text-[20px]">
                   { cart.length > 0 ? 
                   // cart has data
                   // display cart
@@ -163,7 +163,7 @@ export default function Paypal() {
                   }
                   </tbody>
                   {/* cart subhead */}
-                  <thead className="text-gray-100 text-bold">
+                  <thead className="text-gray-100 text-bold text-[16px] sm:text-xl">
                     <tr>
                       <th className="py-[0.25rem] px-2 text-center" colSpan="3">
                         Total Price
@@ -171,7 +171,7 @@ export default function Paypal() {
                     </tr>
                   </thead>
                   {/* cart total price */}
-                  <tbody className="border-t-[2px] border-slate-500">
+                  <tbody className="border-t-[2px] border-slate-500 text-[16px] sm:text-xl">
                     <tr className="bg-stone-400 hover:bg-stone-300 text-amber-200 animate__animated animate__backInUp">
                       <td className="py-[0.25rem] px-2 text-center" colSpan="3">
                         ${sum}

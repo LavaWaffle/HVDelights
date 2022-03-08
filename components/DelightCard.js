@@ -150,7 +150,7 @@ export default function DelightCard({ data }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-lg shadow-lg bg-red-400">
+    <div className="animate__scale-in-center overflow-hidden rounded-lg shadow-lg bg-red-400">
       {/* image */}
       <div className="block w-full h-3/12">
         <Image 
@@ -178,11 +178,11 @@ export default function DelightCard({ data }) {
             <span key={index} className="after:content-[',\0020'] last:after:content-['.']">{ingredient}</span>
           ))}
         </h5>
-        <div className="flex items-center justify-between text-gray-700 mb-3 mt-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between text-gray-700 mb-3 mt-2 space-y-2 sm:space-y-0">
           {/* price */}
           <ul>
             <li className="before:content-['\2022\0020']">{`One: $${price}`}</li>
-            <li className="before:content-['\2022\0020']">{`Five: $${priceFive}`}</li>
+            <li className="before:content-['\2022\0020']">{`Five: $${priceFive} : $${(priceFive/5).toFixed(2)} per`}</li>
             <li className="before:content-['\2022\0020']">{`Bulk: $${priceBulkPer} per`}</li>
           </ul>
           {/* nutrition */}
@@ -198,21 +198,21 @@ export default function DelightCard({ data }) {
           <div className="inline-flex items-center justify-between w-full">
             {/* order one radio */}
             <div className="w-1/3">
-              <label className="w-full hover:cursor-pointer select-none" onMouseDown={handleOrderOne}>
+              <label className="w-full hover:cursor-pointer inline-flex items-center justify-center select-none" onMouseDown={handleOrderOne}>
                 <input type="radio" value="option1" checked={orderOne} readOnly/>
                 <span className="bg-amber-300 ml-1 pl-3 pr-4 py-2 w-9/12 rounded">One</span>
               </label>
             </div>
             {/* order five radio */}
             <div className="w-1/3">
-              <label className="w-full hover:cursor-pointer select-none" onMouseDown={handleOrderFive}>
+              <label className="w-full hover:cursor-pointer inline-flex items-center justify-center select-none" onMouseDown={handleOrderFive}>
                 <input type="radio" value="option2" checked={orderFive} readOnly/>
                 <span className="bg-amber-300 ml-1 pl-3 pr-4 py-2 w-9/12 rounded">Five</span>
               </label>
             </div>
             {/* order bulk radio */}
             <div className="w-1/3">
-              <label className="w-full hover:cursor-pointer select-none" onMouseDown={handleOrderBulk}>
+              <label className="w-full hover:cursor-pointer inline-flex items-center justify-center select-none" onMouseDown={handleOrderBulk}>
                 <input type="radio" value="option3" checked={orderBulk} readOnly/>
                 <input type="number" value={bulk} onChange={handleBulk} className="w-9/12 ml-1 px-3 py-1.5 text-base font-normal text-slate-700 bg-amber-300 bg-clip-padding border border-solid border-red-300 rounded transition ease-in-out focus:text-red-600 focus:bg-amber-400 focus:border-red-600 focus:outline-none"/>
               </label>
