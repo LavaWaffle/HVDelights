@@ -103,14 +103,14 @@ export default function Layout({ children }) {
                 <div className="inline-block sm:hidden gap-1">
                   <button tabIndex="0" className="inline-flex items-center">
                   <span>Delights</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-focus-within:-rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-hover:-rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
                   </button>
                 </div>
               </div>
               {/* service sub-pages */}
-              <div className="sm:absolute z-50 top-full inset-x-3 hidden text-center sm:text-left group-focus-within:flex sm:group-hover:flex sm:group-focus-within:hidden flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-amber-400 text-[22px] sm:text-[20px]">
+              <div className="sm:absolute z-50 top-full inset-x-3 hidden text-center sm:text-left group-focus-within:flex group-hover:flex sm:group-focus-within:hidden flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-amber-400 text-[22px] sm:text-[20px]">
                 <Link href="/delights"><a tabIndex="0" className="sm:hidden px-3 py-2">All Delights</a></Link>
                 <Link href="/delights/sandwiches"><a tabIndex="0" className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">Sandwiches</a></Link>
                 <Link href="/delights/salads"><a tabIndex="0" className="sm:bg-amber-50 sm:hover:bg-amber-500 sm:text-amber-500 sm:hover:text-amber-50 px-3 py-2">Salads</a></Link>
