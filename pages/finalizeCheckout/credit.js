@@ -10,7 +10,7 @@ import DelightTableRowEmpty from "../../components/DelightTableRowEmpty";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function credits() {
+export default function Credit() {
   let cart
   let sum 
   if (true == checkCookies('cart')) {
