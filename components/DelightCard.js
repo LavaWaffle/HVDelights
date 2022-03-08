@@ -178,7 +178,7 @@ export default function DelightCard({ data }) {
             <span key={index} className="after:content-[',\0020'] last:after:content-['.']">{ingredient}</span>
           ))}
         </h5>
-        <div className="flex items-center justify-between text-gray-700 mb-3 mt-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between text-gray-700 mb-3 mt-2 space-y-2 sm:space-y-0">
           {/* price */}
           <ul>
             <li className="before:content-['\2022\0020']">{`One: $${price}`}</li>
