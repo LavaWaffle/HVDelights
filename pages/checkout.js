@@ -211,14 +211,14 @@ export default function CheckOut() {
           <div className="inline-flex flex-col sm:flex-row items-center justify-between w-full">
             {/* location HVCHS radio */}
             <div className="w-full sm:w-1/2">
-              <label className="w-full inline-flex hover:cursor-pointer select-none" onMouseDown={handleHVCHS}>
+              <label className="w-full inline-flex items-center justify-center hover:cursor-pointer select-none" onMouseDown={handleHVCHS}>
                 <input type="radio" value="option1" checked={HVCHS} readOnly/>
                 <span className={HVCHS ? "w-full bg-amber-200 m-1 rounded py-2.5 px-4 outline-none" : "w-full bg-white m-1 rounded py-2.5 px-4 outline-none"}>HVCHS</span>
               </label>
             </div>
             {/* location custom radio */}
             <div className="w-full sm:w-1/2">
-              <label className="w-full inline-flex hover:cursor-pointer select-none" onMouseDown={handleCustom}>
+              <label className="w-full inline-flex items-center justify-center hover:cursor-pointer select-none" onMouseDown={handleCustom}>
                 <input type="radio" value="option3" checked={custom} readOnly/>
                 <input value={customInp} onChange={handleCustomInp} type="text" placeholder="custom address" className={custom ? "w-full bg-amber-200 m-1 rounded py-2.5 px-4 outline-none focus:bg-amber-100" : "w-full bg-white m-1 rounded py-2.5 px-4 outline-none focus:bg-amber-100"}/>
               </label>
@@ -231,14 +231,14 @@ export default function CheckOut() {
           <div className="inline-flex flex-col sm:flex-row items-center justify-between w-full">
             {/* credit / debit radio */}
             <div className="w-full sm:w-1/2">
-              <label className="w-full inline-flex hover:cursor-pointer select-none" onMouseDown={handleCreditDebit}>
+              <label className="w-full inline-flex items-center justify-center hover:cursor-pointer select-none" onMouseDown={handleCreditDebit}>
                 <input type="radio" value="option3" checked={creditDebit} readOnly/>
                 <span className={creditDebit ? "w-full bg-amber-200 m-1 rounded py-2.5 px-4 outline-none" : "w-full bg-white m-1 rounded py-2.5 px-4 outline-none"}>Credit / Debit</span>
               </label>
             </div>
             {/* payPal radio */}
             <div className="w-full sm:w-1/2">
-              <label className="w-full inline-flex hover:cursor-pointer select-none" onMouseDown={handlePayPal}>
+              <label className="w-full inline-flex items-center justify-center hover:cursor-pointer select-none" onMouseDown={handlePayPal}>
                 <input type="radio" value="option1" checked={payPal} readOnly/>
                 <span className={payPal ? "w-full bg-amber-200 m-1 rounded py-2.5 px-4 outline-none" : "w-full bg-white m-1 rounded py-2.5 px-4 outline-none"}>PayPal</span>
               </label>
