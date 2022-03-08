@@ -56,16 +56,20 @@ export default function DelightCard({ data }) {
 
   // handles bulk default text
   const [bulk, setBulk] = useState(10)
-  // handles bulk changing value (10 <= value <= 200)
+  // handles bulk changing value 
   const handleBulk = event => {
-    if (event.target.value >= 10 && event.target.value <= 200) { 
-      // if user entered value is <= 10 and >= 200
-      // set bulk to user value
-      setBulk(event.target.value)
-    } else {
-      // if user entered value is < 10 or > 200
-      // warn then to enter a value that is supported
-      toast.info('You can\'t have a bulk order of less than 10 or greater than 200 items', {
+    // set bulk to user value
+    setBulk(event.target.value)
+  }
+
+  // handles cart 
+  const [cart, setCart] = useState()
+  // handles cart changing (runs when cart changes)
+  useEffect(() => {
+    if (false == (bulk >= 10 && bulk <= 200)) {
+      // if bulk order value is not 200 >= bulk >= 10
+      // warn them to enter a value that is supported
+      toast.error('You can\'t have a bulk order of less than 10 or greater than 200 items', {
         position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,
@@ -75,13 +79,7 @@ export default function DelightCard({ data }) {
         progress: undefined,
       });
     }
-  }
-
-  // handles cart 
-  const [cart, setCart] = useState()
-  // handles cart changing (runs when cart changes)
-  useEffect(() => {
-    if (true == checkCookies('cart')) {
+    else if (true == checkCookies('cart')) {
       // cart exists in cookies
       if (typeof cart === 'object') {
         // user ordered a delight
@@ -92,6 +90,16 @@ export default function DelightCard({ data }) {
           path: "/",
           sameSite: true,
         })
+        // notify the user they added an item to the cart
+        toast.info(`Added ${cart.quantity} ${cart.title}(s) to the cart for $${cart.price}`, {
+          position: "bottom-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } else if (typeof cart === 'object') {
       // user ordered a delight, but cart doesn't exist
@@ -118,36 +126,18 @@ export default function DelightCard({ data }) {
       // if user wants to order one delight
       // add item to cart
       setCart({title: title, quantity: 1, price: price})
-      // tell user they added the item to the cart
-      toast.info(`Added 1 ${title} to the cart for $${price}`, {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     } else if (true == orderFive) {
       // if user wants to order five delights
       // add item to cart
       setCart({title: title, quantity: 5, price: priceFive})
-      // tell user they added the item to the cart
-      toast.info(`Added 5 ${title}s to the cart for $${priceFive}`, {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    } else {
+    } else if (true == orderBulk) {
       // if user wants to order many items
       // add item to cart
       setCart({title: title, quantity: parseInt(bulk), price: (Math.round(priceBulkPer*bulk*1000)/1000).toFixed(2)})
-      // tell user they added the item to the cart
-      toast.info(`Added ${bulk} ${title}s to the cart for $${(Math.round(priceBulkPer*bulk*1000)/1000).toFixed(2)}`, {
+    } else {
+      // if user didn't select an option
+      // inform user to select one
+      toast.error('You must select a quantity to order', {
         position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,

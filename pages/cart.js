@@ -1,6 +1,13 @@
 import CustomHead from "../components/CustomHead";
 import WidthLimiter from "../components/WidthLimiter";
-import { getCookie, removeCookies, checkCookies } from 'cookies-next';
+import { getCookie, checkCookies } from 'cookies-next';
+import Router from "next/router";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import DelightTableRow from "../components/DelightTableRow";
+import DelightTableRowEmpty from "../components/DelightTableRowEmpty";
+
 
 export default function Cart() {
   let cart
@@ -23,10 +30,27 @@ export default function Cart() {
   const handleNextForm = event => {
     // prevents page froom reloading
     event.preventDefault()
-    // removes cart from cookies
-    removeCookies('cart')
+    
+    if (cart.length > 0) {
+    // user hasitems in cart
+    // push content out of hero
+    setAnime('animate__slide-out-left')
+    // pushes user to checkout page
+    setTimeout(() => {Router.push('/checkout')}, 350)
+    } else {
+      toast.info('Add delights to the cart before checking out', {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   }
 
+  const [anime, setAnime] = useState('')
   return (
   <>
   {/* page name */}
@@ -42,6 +66,7 @@ export default function Cart() {
         </h1>
       </div>
 
+      <div className={anime}>
       {/* cart */}
       <div className="flex items-center justify-center w-full">
         <table className="w-fit sm:w-fit md:w-10/12 lg:w-9/12 bg-red-400 text-center md:text-left text-xl sm:text-3xl">
@@ -65,25 +90,11 @@ export default function Cart() {
           // cart has data
           // display cart
           cart.map((delight, index) => (
-            <tr key={index} className="border-b-[2px] border-slate-500 even:bg-neutral-400 even:hover:bg-neutral-300 odd:bg-stone-400 odd:hover:bg-stone-300 even:text-gray-50 odd:text-zinc-50">
-              <td key={index + delight.title} className="py-[0.25rem] px-2">
-                {delight.title}
-              </td>
-              <td key={index + delight.quantity} className="py-[0.25rem] px-2">
-                {delight.quantity}
-              </td>
-              <td key={index + delight.price} className="py-[0.25rem] px-2">
-                ${delight.price}
-              </td>
-            </tr>
+            <DelightTableRow key={1+(index*index)} data={delight} />
           )) : 
           // cart doesn't have data
           // display that the cart doesn't have data
-          <tr className="border-b-[2px] border-slate-500 even:bg-neutral-400 even:hover:bg-neutral-300 odd:bg-stone-400 odd:hover:bg-stone-300 even:text-gray-50 odd:text-zinc-50">
-            <td className="py-[0.25rem] px-2 text-center" colSpan="3">
-              Cart is empty
-            </td>
-          </tr>
+          <DelightTableRowEmpty />
           }
 				  </tbody>
           {/* cart subhead */}
@@ -107,9 +118,10 @@ export default function Cart() {
       {/* next button */}
       <form onSubmit={handleNextForm}>
         <div className="inline-flex justify-center w-full mt-4">
-          <button type="sumbit" className="inline-block px-10 py-2.5 rounded ripple-bg-amber-400 text-white">Next</button>
+          <button type="sumbit" className="inline-block px-10 py-2.5 rounded ripple-bg-amber-400 text-white">Checkout</button>
         </div>
       </form>
+      </div>
     </WidthLimiter>
   </section>
   </>
