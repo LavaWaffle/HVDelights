@@ -111,7 +111,7 @@ export default function DelightsSlug({ delights }) {
       {/* width limiter */}
       <WidthLimiter>
         {/* title */}
-        <div className="flex justify-around items-center mb-4">
+        <div className="flex flex-col sm:flex-row justify-around items-center mb-4">
           <h1 className="text-amber-400 font-title text-4xl text-center font-bold mb-3">
             {`Delights - ${delights[0].fields.delightType}`}
           </h1>
