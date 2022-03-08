@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import Router from "next/router";
 
 
-export default function notFound() {
+export default function NotFound() {
   useEffect(() => {
     setTimeout(() => {
       Router.push('/')
