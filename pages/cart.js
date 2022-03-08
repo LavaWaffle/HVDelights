@@ -56,7 +56,7 @@ export default function Cart() {
   {/* page name */}
   <CustomHead title="HV Delights - Cart" />
   {/* hero */}
-  <section className="bg-slate-500 py-10">
+  <section className="bg-slate-500 py-10 overflow-x-hidden">
     {/* width limiter */}
     <WidthLimiter>
       {/* animate content out */}

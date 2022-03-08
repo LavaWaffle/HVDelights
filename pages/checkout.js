@@ -177,7 +177,7 @@ export default function CheckOut() {
   {/* page name */}
   <CustomHead title="HV Delights - Checkout" />
   {/* hero */}
-  <section className="bg-slate-500 py-10">
+  <section className="bg-slate-500 py-10 overflow-x-hidden">
     {/* width limiter */}
     <WidthLimiter>
       {/* animate content in and out */}
