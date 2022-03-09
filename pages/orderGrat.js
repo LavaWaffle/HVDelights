@@ -42,7 +42,7 @@ export default function orderGrat({ thumbnails }) {
           </h1>
           {/* card sub title */}
           <h5 className="text-amber-300 text-2xl mt-2">
-            Your order is being rocess and a confirmation emai will be sent soon. Have a delightful day!
+            Your order is being processed and a confirmation email will be sent soon. Have a delightful day!
           </h5>
         </div>
         {/* sub title  */}
